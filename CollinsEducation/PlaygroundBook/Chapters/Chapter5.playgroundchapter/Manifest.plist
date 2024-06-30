@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Name</key>
+	<string>Chapter 5. Accelerometers</string>
+	<key>Pages</key>
+	<array>
+		<string>2.MotionControl.playgroundpage</string>
+		<string>3.AdvancedControl.playgroundpage</string>
+		<string>4.Challenge.playgroundpage</string>
+	</array>
+</dict>
+</plist>

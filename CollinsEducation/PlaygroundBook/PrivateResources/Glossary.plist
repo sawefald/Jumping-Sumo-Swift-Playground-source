@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Terms</key>
+	<dict>
+		<key>drone</key>
+		<dict>
+			<key>Definition</key>
+			<string>This drone can jump 80cm in the air, perform acrobatic tricks, u-turns, record and stream video</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Chapter1/2.ForwardBackward</string>
+				<key>Title</key>
+				<string>Forward Backward</string>
+			</dict>
+		</dict>
+		<key>function</key>
+		<dict>
+			<key>Definition</key>
+			<string>A function is a sequence of commands that can be reused together later in a program</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Chapter1/4.Challenge</string>
+				<key>Title</key>
+				<string>First Challenge</string>
+			</dict>
+		</dict>
+		<key>variable</key>
+		<dict>
+			<key>Definition</key>
+			<string>A variable is used to name stored data with in a computer program. </string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Chapter2/2.Speed</string>
+				<key>Title</key>
+				<string>Speed</string>
+			</dict>
+		</dict>
+		<key>parameter</key>
+		<dict>
+			<key>Definition</key>
+			<string>A parameter (or argument) is a value that&apos;s passed to a function for the functions use.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Chapter2/3.ComplexMove</string>
+				<key>Title</key>
+				<string>Complex Move</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
