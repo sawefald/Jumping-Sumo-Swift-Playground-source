@@ -15,7 +15,7 @@ protocol DroneViewProxyDroneDelegate: AnyObject {
 
 /// Motion tracker related events listener
 protocol DroneViewProxyMotionTrackerDelegate: AnyObject {
-    func droneViewProxyDidReceiveMotionEvent()
+    func droneViewProxyDidReceiveMotionEvent(_ event: MotionEvent)
 }
 
 /// Playground page proxy to the drone liveview
@@ -29,8 +29,10 @@ class DroneViewProxy {
         case stopMoving
         case animate(animation: Animations)
         case jump(jumpType: JumpType)
+        case startAnimation(animation: OtherAnimations)
+        case stopAnimation
         //case takePicture
-        //case startMotionTracker
+        case startMotionTracker
 
         func marshal() -> PlaygroundValue {
             switch self {
@@ -50,10 +52,14 @@ class DroneViewProxy {
                 return .dictionary(["cmd": .string("animate"), "animation": .integer(Int(animation.rawValue))])
             case .jump(let jumpType):
                 return .dictionary(["cmd": .string("jump"), "jumpType": .integer(Int(jumpType.rawValue))])
+            case .startAnimation(let animation):
+                return .dictionary(["cmd": .string("startAnimation"), "animation": .integer(Int(animation.rawValue))])
+           case .stopAnimation:
+               return .dictionary(["cmd": .string("stopAnimation")])
 //            case .takePicture:
 //                return .dictionary(["cmd": .string("takePicture")])
-//            case .startMotionTracker:
-//                return .dictionary(["cmd": .string("startMotionTracker")])
+            case .startMotionTracker:
+                return .dictionary(["cmd": .string("startMotionTracker")])
 
             }
         }
@@ -90,8 +96,15 @@ class DroneViewProxy {
                        let jumpType = JumpType(rawValue: UInt32(jumpTypeValue)) {
                         val = .jump(jumpType: jumpType)
                     }
-//                case "startMotionTracker":
-//                    val = .startMotionTracker
+                case "stopAnimation":
+                    val = .stopAnimation
+                case "startAnimation":
+                    if case let .integer(animationValue)? = dict["animation"],
+                       let animation = OtherAnimations(rawValue: UInt32(animationValue)) {
+                        val = .startAnimation(animation: animation)
+                    }
+                case "startMotionTracker":
+                    val = .startMotionTracker
                 default:
                     break
                 }
@@ -106,14 +119,14 @@ class DroneViewProxy {
 
     /// Events from the live view
     enum Evt {
-        // drone connected/disconnected
+        /// drone connected/disconnected
         case connected(Bool)
-        // latest command completed
+        /// latest command completed
         case cmdCompleted
-        // status update
+        /// status update
         case status
-        // motion tracker event
-        //case motionEvent(event: MotionEvent)
+        /// motion tracker event
+        case motionEvent(event: MotionEvent)
 
         func marshal() -> PlaygroundValue {
             switch self {
@@ -124,9 +137,9 @@ class DroneViewProxy {
                 return .dictionary(["evt": .string("cmdCompleted")])
             case .status:
                 return .dictionary(["evt": .string("status")])
-            //case let .motionEvent(motion):
-            //    return .dictionary(["evt": .string("motion"),
-            //                        "motion": .integer(motion.rawValue)])
+            case let .motionEvent(motion):
+                return .dictionary(["evt": .string("motion"),
+                                    "motion": .integer(motion.rawValue)])
             }
         }
 
@@ -148,12 +161,12 @@ class DroneViewProxy {
                 case "status":
                         val = .status
 
-                //case "motion":
-                //    if let motionEventEntry = dict["motion"],
-                //        case let .integer(motionEventVal) = motionEventEntry,
-                //        let motionEvent = MotionEvent(rawValue: motionEventVal) {
-                //        val = .motionEvent(event: motionEvent)
-                //    }
+                case "motion":
+                    if let motionEventEntry = dict["motion"],
+                        case let .integer(motionEventVal) = motionEventEntry,
+                        let motionEvent = MotionEvent(rawValue: motionEventVal) {
+                        val = .motionEvent(event: motionEvent)
+                    }
 
                 default: break
                 }
@@ -203,8 +216,8 @@ class DroneViewProxy {
             done = true
         case .status:
             droneDelegate?.droneViewProxyDidReceiveStatusEvent()
-//        case .motionEvent(let motionEvent):
-//            motionTrackerDelegate?.droneViewProxyDidReceiveMotionEvent(motionEvent)
+        case .motionEvent(let motionEvent):
+            motionTrackerDelegate?.droneViewProxyDidReceiveMotionEvent(motionEvent)
         }
     }
 

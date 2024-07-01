@@ -23,6 +23,9 @@
 		5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF2F9AD2054BBF300191409 /* LiveViewController.swift */; };
 		5EF2F9B72054E6FB00191409 /* Chapters in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9B62054E6F900191409 /* Chapters */; };
 		A911D0F92C2E510D0025FA26 /* Glossary.plist in Resources */ = {isa = PBXBuildFile; fileRef = A911D0F82C2E510D0025FA26 /* Glossary.plist */; };
+		A911D0FB2C32029B0025FA26 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A911D0FA2C32029B0025FA26 /* MotionDetector.swift */; };
+		A911D0FD2C3203BE0025FA26 /* MotionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A911D0FC2C3203BE0025FA26 /* MotionTracker.swift */; };
+		A911D0FE2C3205050025FA26 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A911D0FA2C32029B0025FA26 /* MotionDetector.swift */; };
 		A963F16D2C153CDA007C0CB3 /* DroneWifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963F1322C114C29007C0CB3 /* DroneWifi.swift */; };
 		A963F16E2C153CDD007C0CB3 /* DroneViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963F14C2C152C3D007C0CB3 /* DroneViewControllerBase.swift */; };
 		A963F16F2C153CE1007C0CB3 /* DroneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963F1382C114CBC007C0CB3 /* DroneController.swift */; };
@@ -169,6 +172,8 @@
 		5EF2F9AD2054BBF300191409 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		5EF2F9B62054E6F900191409 /* Chapters */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Chapters; sourceTree = "<group>"; };
 		A911D0F82C2E510D0025FA26 /* Glossary.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Glossary.plist; sourceTree = "<group>"; };
+		A911D0FA2C32029B0025FA26 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		A911D0FC2C3203BE0025FA26 /* MotionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTracker.swift; sourceTree = "<group>"; };
 		A963F1322C114C29007C0CB3 /* DroneWifi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneWifi.swift; sourceTree = "<group>"; };
 		A963F1342C114C64007C0CB3 /* DroneProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneProtocol.swift; sourceTree = "<group>"; };
 		A963F1382C114CBC007C0CB3 /* DroneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneController.swift; sourceTree = "<group>"; };
@@ -320,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				A963F1422C12934F007C0CB3 /* DroneViewProxy.swift */,
+				A911D0FA2C32029B0025FA26 /* MotionDetector.swift */,
 				A963F1402C129311007C0CB3 /* Drone.swift */,
 				A963F1442C1296CC007C0CB3 /* Assessor.swift */,
 				A963F13E2C1291CA007C0CB3 /* Api.swift */,
@@ -333,6 +339,7 @@
 				A963F1382C114CBC007C0CB3 /* DroneController.swift */,
 				A963F1342C114C64007C0CB3 /* DroneProtocol.swift */,
 				A963F1482C129E40007C0CB3 /* DataStorage.swift */,
+				A911D0FC2C3203BE0025FA26 /* MotionTracker.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -574,6 +581,7 @@
 				A9FCC3F52C1691690086EE50 /* Assessor.swift in Sources */,
 				A9FCC3F02C1691250086EE50 /* MoveDirection.swift in Sources */,
 				5E6F7E6C2368FC01008CC191 /* BookAPI.swift in Sources */,
+				A911D0FE2C3205050025FA26 /* MotionDetector.swift in Sources */,
 				A9FCC3F32C1691620086EE50 /* Lights.swift in Sources */,
 				A9FCC3F22C16915B0086EE50 /* MoveParams.swift in Sources */,
 				A9FCC3F62C16916D0086EE50 /* Drone.swift in Sources */,
@@ -593,11 +601,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A911D0FD2C3203BE0025FA26 /* MotionTracker.swift in Sources */,
 				A963F1702C153CE9007C0CB3 /* DroneProtocol.swift in Sources */,
 				5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */,
 				A963F16F2C153CE1007C0CB3 /* DroneController.swift in Sources */,
 				A963F16D2C153CDA007C0CB3 /* DroneWifi.swift in Sources */,
 				A963F16E2C153CDD007C0CB3 /* DroneViewControllerBase.swift in Sources */,
+				A911D0FB2C32029B0025FA26 /* MotionDetector.swift in Sources */,
 				A9FCC3E82C168F3F0086EE50 /* Assessor.swift in Sources */,
 				A9FCC3EC2C168F470086EE50 /* DroneViewProxy.swift in Sources */,
 				A9FCC3E92C168F400086EE50 /* Drone.swift in Sources */,

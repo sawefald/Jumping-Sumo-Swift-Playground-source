@@ -53,9 +53,27 @@ public class Drone {
     /// Stop current mouvement.
     public func stopMoving() {
         droneViewProxy.sendCommand(.stopMoving)
+        assessor?.add(action: .stopMoving)
         droneViewProxy.waitDone()
     }
 
+    /// Animation   and return immediatly
+    ///
+    /// - Parameters:
+    ///   - direction: direction to move
+    public func startAnimation(animation: OtherAnimations) {
+        droneViewProxy.sendCommand(.startAnimation(animation: animation))
+        assessor?.add(action: .startAnimation(animation: animation))
+    }
+
+    /// Stop current mouvement.
+    public func stopAnimation() {
+        droneViewProxy.sendCommand(.stopAnimation)
+        assessor?.add(action: .stopAnimation)
+        droneViewProxy.waitDone()
+    }
+
+    
     /// Complex move: move in multiple directions for a specific duration
     ///
     /// - Parameters:
@@ -97,7 +115,6 @@ public class Drone {
     /// - Parameter animation: Animations
     public func animate(animation: Animations) {
         droneViewProxy.sendCommand(.animate(animation: animation))
-        droneViewProxy.waitDone()
         assessor?.add(action: .animate(animation: animation))
     }
     
@@ -106,7 +123,6 @@ public class Drone {
     /// - Parameter jump: JumpType
     public func jump(jumpType: JumpType) {
         droneViewProxy.sendCommand(.jump(jumpType: jumpType))
-        droneViewProxy.waitDone()
         assessor?.add(action: .jump(jumpType: jumpType))
     }
 

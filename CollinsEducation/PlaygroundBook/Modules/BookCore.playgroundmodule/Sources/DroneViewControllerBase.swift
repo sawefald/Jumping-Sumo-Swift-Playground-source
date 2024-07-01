@@ -21,10 +21,10 @@ public class DroneViewControllerBase: UIViewController, PlaygroundLiveViewSafeAr
     // latest operation error
     fileprivate(set) var latestError: DroneController.OpError?
 
-    // drone controller
+    /// drone controller
     let droneController = DroneController()
-    // motion tracker
-    //fileprivate let motionTracker = MotionTracker()
+    /// motion tracker
+    fileprivate let motionTracker = MotionTracker()
     
     @IBAction func connectButton(sender: UIButton) {
         print ("count: \(count) drone state: \(droneController.connectionState)")
@@ -44,7 +44,7 @@ public class DroneViewControllerBase: UIViewController, PlaygroundLiveViewSafeAr
     override public func viewDidLoad() {
         super.viewDidLoad()
         droneController.delegate = self
-        //motionTracker.delegate = self
+        motionTracker.delegate = self
         //btView = PlaygroundBluetoothConnectionView(centralManager: droneController.ble.btManager)
         //view.addSubview(btView!)
 
@@ -132,25 +132,25 @@ extension DroneViewControllerBase: DroneControllerDelegate {
         send(event: .cmdCompleted)
     }
 
-//    func motionTrackerStarted() {
-//    }
+    func motionTrackerStarted() {
+    }
 
-//    func motiontrackerUpdate(lateralAngle: Int, longitudinalAngle: Int, lastEvent: MotionEvent) {
-//    }
+    func motiontrackerUpdate(lateralAngle: Int, longitudinalAngle: Int, lastEvent: MotionEvent) {
+    }
 
-//    func motionTrackerEvent(_ event: MotionEvent) {
-//    }
+    func motionTrackerEvent(_ event: MotionEvent) {
+    }
 }
 
-//extension DroneViewControllerBase: MotionTrackerDelegate {
-//
-//    final func motionUpdate(lateralAngle: Int, longitudinalAngle: Int, lastEvent: MotionEvent) {
-//    }
-//
-//    final func motionEvent(_ event: MotionEvent) {
-//        send(event: .motionEvent(event: event))
-//    }
-//}
+extension DroneViewControllerBase: MotionTrackerDelegate {
+
+    final func motionUpdate(lateralAngle: Int, longitudinalAngle: Int, lastEvent: MotionEvent) {
+    }
+
+    final func motionEvent(_ event: MotionEvent) {
+        send(event: .motionEvent(event: event))
+    }
+}
 
 extension DroneViewControllerBase: PlaygroundLiveViewMessageHandler {
 
@@ -163,7 +163,7 @@ extension DroneViewControllerBase: PlaygroundLiveViewMessageHandler {
     final  public func liveViewMessageConnectionClosed() {
         liveViewConnectionOpened = false
         droneController.execute(op: .stopMoving)
-        //motionTracker.stop()
+        motionTracker.stop()
         updateContent()
     }
 
@@ -201,11 +201,17 @@ extension DroneViewControllerBase: PlaygroundLiveViewMessageHandler {
                 else {
                     droneController.execute(op: .jump(jumpType: jumpType))
                 }
+            case .startAnimation(let animation):
+                opLabel.text = "Start Animation"
+                droneController.execute(op: .startAnimation(animation: animation))
+            case .stopAnimation:
+                opLabel.text = "stop animation"
+                droneController.execute(op: .stopAnimation)
             //case .takePicture:
             //    droneController.execute(op: .takePicture)
-            //case .startMotionTracker:
-            //    motionTracker.start()
-            //    break
+            case .startMotionTracker:
+                motionTracker.start()
+                break
             }
         }
         updateContent()

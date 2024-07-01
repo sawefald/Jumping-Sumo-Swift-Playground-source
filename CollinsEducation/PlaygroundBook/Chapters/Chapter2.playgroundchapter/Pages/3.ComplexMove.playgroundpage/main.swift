@@ -39,12 +39,10 @@ startAssessor()
 //#-end-editable-code
 
 //#-hidden-code
-let success = NSLocalizedString(
-    "### Congratulations!\nYou know how to use the complex move command!\n\n[**Next Page**](@next)",
-    comment: "Complex move page success")
+let success = String("### Congratulations!\nYou know how to use the complex move command!\n\n[**Next Page**](@next)")
 let expected: [Assessor.Assessment] = [
     (.complexMove(nil, duration: nil), [
-        NSLocalizedString("Try the command `move(speed:20, turn:20, duration:2)`", comment: "complex move hint")
+        String("Try the command `move(speed:20, turn:20, duration:2)`")
         ]),
 ]
 checkAssessment(expected:expected, success: success)

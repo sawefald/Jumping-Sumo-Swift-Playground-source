@@ -33,9 +33,8 @@ func square() {
 //#-end-editable-code
 
 //#-hidden-code
-let success = NSLocalizedString(
- "### Congratulations!\nYou achieved your first mission!\n\n[**Next Page**](@next)",
-    comment: "challenge 1 page success")
+let success = String(
+ "### Congratulations!\nYou achieved your first mission!\n\n[**Next Page**](@next)")
 let expected: [Assessor.Assessment] = [
     (.all([
             .move(direction: nil, duration: nil),
@@ -47,7 +46,7 @@ let expected: [Assessor.Assessment] = [
             .move(direction: nil, duration: nil),
             .move(direction: nil, duration: nil)
             ]),
-         [NSLocalizedString("You must move & turn in same direction 4 times.", comment: "square hint")]) ]
+         [String("You must move & turn in same direction 4 times.")]) ]
 checkAssessment(expected:expected, success: success)
 //#-end-hidden-code
 

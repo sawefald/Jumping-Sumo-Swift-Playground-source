@@ -14,7 +14,7 @@ let droneViewProxy = DroneViewProxy()
 let drone = Drone(droneViewProxy: droneViewProxy)
 
 // Global motion detector
-//let motionDetector = MotionDetector(droneViewProxy: droneViewProxy)
+let motionDetector = MotionDetector(droneViewProxy: droneViewProxy)
 
 /// Speed for simple moves. Speed is in % of the drone maximum speed
 public var droneSpeed: UInt {
@@ -88,6 +88,21 @@ public func jump(jumpType: JumpType) {
     drone.jump(jumpType: jumpType)
 }
 
+/// Start an animation
+///
+/// - Parameter animation: OtherAnimations
+public func startAnimation(animation: OtherAnimations) {
+    drone.startAnimation(animation: animation)
+}
+
+/// Stop an animation
+///
+/// - Parameter animation: OtherAnimations
+public func stopAnimation() {
+    drone.stopAnimation()
+}
+
+
 /// Take a picture
 //public func takePicture() {
 //    drone.takePicture()
@@ -105,9 +120,9 @@ public func wait(_ seconds: Int) {
 /// Wait for the next iPad motion event
 ///
 /// - Returns: next motion event
-//public func waitNextMotionEvent() -> MotionEvent {
-//    return motionDetector.waitNextMotionEvent()
-//}
+public func waitNextMotionEvent() -> MotionEvent {
+    return motionDetector.waitNextMotionEvent()
+}
 
 /// Starts collecting action to check assessment
 public func startAssessor() {

@@ -134,6 +134,18 @@ class DroneProtocol {
         }
     }
 
+    func startAnimation(animation: UInt32) {
+        dispatchQueue.sync {
+            commandChannel.send(command: .startAnimation(animation: animation))
+        }
+    }
+    
+    func stopAnimation() {
+        dispatchQueue.sync {
+            commandChannel.send(command: .stopAnimation)
+        }
+    }
+
     func jump(jumpType: UInt32) {
         dispatchQueue.sync {
             commandChannel.send(command: .jump(jumpType: jumpType))
@@ -225,6 +237,8 @@ class DroneProtocol {
     case pcmd(flag: Bool, speed: Int8, turn: Int8)
     case animate(animation: UInt32)
     case jump(jumpType: UInt32)
+    case startAnimation(animation: UInt32)
+    case stopAnimation
     case emergency
     case cancelJump
     case loadJump
@@ -265,6 +279,13 @@ class DroneProtocol {
         case .animate(let animation):
             var data = Data(forCommand: (3, 2, 4))
             data.append(data: animation)
+            return data
+        case .startAnimation(let animation):
+            var data = Data(forCommand: (0, 24, 0))
+            data.append(data: animation)
+            return data
+        case .stopAnimation:
+            let data = Data(forCommand: (0, 24, 2))
             return data
         }
     }

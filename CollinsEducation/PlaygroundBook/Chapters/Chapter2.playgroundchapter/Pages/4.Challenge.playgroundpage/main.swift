@@ -32,14 +32,13 @@ func circle() {
 //#-end-editable-code
 
 //#-hidden-code
-let success = NSLocalizedString(
- "### Congratulations!\nYou achieved your first mission!\n\n[**Next Page**](@next)",
-    comment: "challenge 1 page success")
+let success = String(
+ "### Congratulations!\nYou achieved your second mission!\n\n[**Next Page**](@next)")
 let expected: [Assessor.Assessment] = [
     (.all([
             .complexMove(nil, duration: nil),
             ]),
-         [NSLocalizedString("You must perform a complex move.", comment: "circle hint")]) ]
+         [String("You must perform a complex move.")]) ]
 checkAssessment(expected:expected, success: success)
 //#-end-hidden-code
 

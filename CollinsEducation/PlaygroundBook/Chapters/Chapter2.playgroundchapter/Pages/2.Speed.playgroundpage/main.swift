@@ -36,12 +36,11 @@ startAssessor()
 
 
 //#-hidden-code
-let success = NSLocalizedString(
-    "### Congratulations!\nYou know how to change the speed of your drone!\n\n[**Next Page**](@next)",
-    comment: "Speed page success")
+let success = String(
+    "### Congratulations!\nYou know how to change the speed of your drone!\n\n[**Next Page**](@next)")
 let expected: [Assessor.Assessment] = [
     (.speed(nil), [
-        NSLocalizedString("Use `droneSpeed = value<0..100>` to change the drone speed.", comment: "droneSpeed hint")
+        String("Use `droneSpeed = value<0..100>` to change the drone speed.")
         ])
 ]
 checkAssessment(expected:expected, success: success)
