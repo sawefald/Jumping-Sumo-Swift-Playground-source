@@ -52,6 +52,58 @@
 				<string>Complex Move</string>
 			</dict>
 		</dict>
+		<key>animation</key>
+		<dict>
+			<key>Definition</key>
+			<string>A type of movement to be performed by the Jumping Sumo Drone.   </string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Chapter3/2.SimpleAnimations</string>
+				<key>Title</key>
+				<string>Simple Animations</string>
+			</dict>
+		</dict>
+		<key>move</key>
+		<dict>
+			<key>Definition</key>
+			<string>Move function has 3 forms
+
+```move(direction: MoveDirection, duration: UInt)```
+
+```move(direction: MoveDirection)```
+
+```move(speed: Int, turn:Int, durration:UInt)```
+
+`MoveDirection` has four values `forward`,`backward`, `left`, `right`
+
+Duration is in seconds
+
+speed and turn range from -100 to 100, where negatives go backwards and left respectively.
+
+To stop moving use the `stopMoving()` function.</string>
+		</dict>
+		<key>animate</key>
+		<dict>
+			<key>Definition</key>
+			<string>To perform an animation: ```animate(animation: Animations)```  where `Animations` can be  `spin`, `tap`, `slowshake`, `metronome`, `ondulation`, `spintoposture`, `spiral`, and `slalom`.
+
+To perform a conditional animation use `startAnimation(animation: OtherAnimations)` where `OtherAnimations` are flashlights` (Buzz Only), `blinklights` (Buzz Only), `oscillatelights` (Buzz Only), `spin`, `tap`, `slowshake`, `metronome`, `ondulation`, `spinposture`, `spiral`, `slalom`, `boost` (Max Only). 
+
+ **Note:** Some animations only work with some drones.
+
+To stop an animation do stopAnimation()</string>
+		</dict>
+		<key>jump</key>
+		<dict>
+			<key>Definition</key>
+			<string>Used to perform an jump: ```jump(jumpType: JumpType)```  where `JumpType` can be  `long` or `high`.</string>
+		</dict>
+		<key>speed</key>
+		<dict>
+			<key>Definition</key>
+			<string>To change the speed of your drone use `droneSpeed` with values from 1-100.</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

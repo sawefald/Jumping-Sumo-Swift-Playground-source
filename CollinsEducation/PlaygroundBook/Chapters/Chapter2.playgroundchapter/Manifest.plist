@@ -6,6 +6,7 @@
 	<string>Chapter 2. Next Level Moves</string>
 	<key>Pages</key>
 	<array>
+		<string>1.Intro.cutscenepage</string>
 		<string>2.Speed.playgroundpage</string>
 		<string>3.ComplexMove.playgroundpage</string>
 		<string>4.Challenge.playgroundpage</string>

@@ -14,7 +14,7 @@ let droneViewProxy = DroneViewProxy()
 let drone = Drone(droneViewProxy: droneViewProxy)
 
 // Global motion detector
-//let motionDetector = MotionDetector(droneViewProxy: droneViewProxy)
+let motionDetector = MotionDetector(droneViewProxy: droneViewProxy)
 
 /// Speed for simple moves. Speed is in % of the drone maximum speed
 public var droneSpeed: UInt {
@@ -28,7 +28,6 @@ public var droneSpeed: UInt {
 
 /// Wait until the drone is connected and ready to accept commands
 public func waitDroneConnected() {
-    print("Waiting for drone to connect")
     drone.waitConnected()
 }
 
@@ -65,20 +64,12 @@ public func move(speed: Int, turn: Int, duration: UInt) {
     drone.move(params: MoveParams(longitudinalSpeed: speed, lateralSpeed: turn), duration: duration)
 }
 
-/// Ask the drone to turn on itself
-///
-/// - Parameters:
-///   - direction: turn direction
-///   - angle: angle to turn in degrees (0 to 180 degrees)
-//public func turn(direction: TurnDirection, angle: UInt) {
- //   drone.turn(direction: direction, angle: angle)
-//}
-
 /// Perform an animation
 ///
 /// - Parameter animation: Animations
 public func animate(animation: Animations) {
     drone.animate(animation: animation)
+    wait(2)
 }
 
 /// Perform a jump
@@ -87,6 +78,21 @@ public func animate(animation: Animations) {
 public func jump(jumpType: JumpType) {
     drone.jump(jumpType: jumpType)
 }
+
+/// Start an animation
+///
+/// - Parameter animation: OtherAnimations
+public func startAnimation(animation: OtherAnimations) {
+    drone.startAnimation(animation: animation)
+}
+
+/// Stop an animation
+///
+/// - Parameter animation: OtherAnimations
+public func stopAnimation() {
+    drone.stopAnimation()
+}
+
 
 /// Take a picture
 //public func takePicture() {
@@ -105,9 +111,9 @@ public func wait(_ seconds: Int) {
 /// Wait for the next iPad motion event
 ///
 /// - Returns: next motion event
-//public func waitNextMotionEvent() -> MotionEvent {
-//    return motionDetector.waitNextMotionEvent()
-//}
+public func waitNextMotionEvent() -> MotionEvent {
+    return motionDetector.waitNextMotionEvent()
+}
 
 /// Starts collecting action to check assessment
 public func startAssessor() {
@@ -117,4 +123,8 @@ public func startAssessor() {
 /// Check if expected actions have been made
 public func checkAssessment(expected expectedActions: [Assessor.Assessment], success: String?) {
     PlaygroundPage.current.assessmentStatus = drone.assessor?.check(expected: expectedActions, success: success)
+}
+
+public func isConnected() -> Bool {
+    return drone.isConnected()
 }

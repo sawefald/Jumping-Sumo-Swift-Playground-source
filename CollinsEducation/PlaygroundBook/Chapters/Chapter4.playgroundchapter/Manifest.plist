@@ -6,6 +6,7 @@
 	<string>Chapter 4. Advanced Programming</string>
 	<key>Pages</key>
 	<array>
+		<string>1.Intro.cutscenepage</string>
 		<string>2.ConditionalMoves.playgroundpage</string>
 		<string>3.ConditionalAnimations.playgroundpage</string>
 		<string>4.Challenge.playgroundpage</string>

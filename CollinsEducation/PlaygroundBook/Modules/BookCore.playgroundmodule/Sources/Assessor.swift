@@ -18,10 +18,13 @@ public class Assessor {
     public enum Action {
         case speed(UInt?)
         case move(direction: MoveDirection?, duration: Int?)
+        case stopMoving
         case complexMove(MoveParams?, duration: UInt?)
 //        case turn(direction: TurnDirection?, angle: UInt?)
         case animate(animation: Animations?)
         case jump(jumpType: JumpType?)
+        case startAnimation(animation: OtherAnimations?)
+        case stopAnimation
 //        case takePicture
         // for expected action only: a set of action present is any order
         case allAnyOrder([Action])
@@ -121,6 +124,10 @@ public class Assessor {
                     (expectedDuration == nil || expectedDuration == duration) {
                 return true
             }
+        case .stopMoving:
+            if case .stopMoving = actual {
+                return true
+            }
         case let .complexMove(expectedParams, expectedDuration) :
             if case let .complexMove(params, duration) = actual,
                 (expectedParams == nil || expectedParams == params) &&
@@ -141,6 +148,15 @@ public class Assessor {
         case let .jump(expectedJumpType):
             if case let .jump(jumpType) = actual,
                 expectedJumpType == nil || expectedJumpType == jumpType {
+                return true
+            }
+        case let .startAnimation(expectedAnimation):
+            if case let .startAnimation(animation) = actual,
+                expectedAnimation == nil || expectedAnimation == animation {
+                return true
+            }
+        case .stopAnimation:
+            if case .stopAnimation = actual {
                 return true
             }
 //        case .takePicture:

@@ -12,24 +12,28 @@ startAssessor()
 
 
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, move(), wait(_:))
-//#-code-completion(identifier, show, MoveDirection, forward, backward)
-//#-code-completion(identifier, show, duration)
+//#-code-completion(identifier, show, animate(animation:), .)
+//#-code-completion(identifier, show, Animations, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
 //#-end-hidden-code
 
 /*:#localized(key: "FirstProseBlock")
- **Goal:** Learn how to move forward and backward.
+ **Goal:** Learn how to animate your drone
 
  1. steps: Place your drone on a flat surface with enough space around you.
+ 2. The command to perform a simple animation of the drone is
 
- For this, direction is either `forward` or `backward`.
+ `animate(animation: Animations)`
+
+ The [animation](glossary://animation) is the type of activity the drone will do on its own once commanded.
+
+ For this, animations are `spin`, `tap`, `slowshake`, `metronome`, `ondulation`, `spintoposture`, `spiral`, and `slalom`
  
  ````
- move(direction: MoveDirection.forward, duration: 2)
+ animate(animation: Animations.spin)
  ````
- The example above will move the drone forward for 2 seconds.
+ The example above will have the drone perform a spin animation.
 
- 3. Try to **move forward** for 1 second and **move backward** for 1 second. Remember, you can use the `wait` command if you want.
+ 3. Try the **spin animation** followed by the **slowshake animation**.
  4. When you are ready, tap **Run My Code**.
 */
 //#-editable-code Tap to enter code
@@ -38,15 +42,15 @@ startAssessor()
 
 //#-hidden-code
 let success = String(
-    "### Congratulations!\nYou know how to use the pitch command!\n\n[**Next Page**](@next)")
+    "### Congratulations!\nYou know how to use the animate command!\n\n[**Next Page**](@next)")
 let expected: [Assessor.Assessment] = [
-    (.move(direction: .forward, duration: nil), [
-        String("First you will move forward using `move(direction: MoveDirection.forward, duration: 1)`."),
-        String("Then you will move backward using `move(direction: MoveDirection.backward, duration: 1)`.")
+    (.animate(animation: .spin), [
+        String("First you will do a spin animation `animate(animation: Animations.spin)`."),
+        String("Then you will do a slowshake animation `animate(animation: Animations.slowshake)`.")
         ]),
-    (.move(direction: .backward, duration: nil), [
-        String("Use `move(direction: MoveDirection.backward, duration: 1)` to move backward.")
-        ]),
+    (.animate(animation: .slowshake), [
+        String("Use `animate(animation: Animations.slowshake)` to do a slowshake animation.")
+        ])
 ]
 checkAssessment(expected:expected, success: success)
 //#-end-hidden-code

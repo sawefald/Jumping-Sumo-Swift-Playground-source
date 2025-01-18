@@ -12,8 +12,8 @@ startAssessor()
 
 
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, MoveDirection, left, right)
 //#-code-completion(identifier, show, move(direction:duration:), .)
+//#-code-completion(identifier, show, MoveDirection, left, right)
 //#-end-hidden-code
 
 /*:#localized(key: "FirstProseBlock")
@@ -31,7 +31,7 @@ startAssessor()
  ````
  The example above will move the drone left for 2 seconds.
 
- 3. Try to **move left** for 1 second and **move right** for 1 second.
+ 3. Try to **move right** for 1 second and **move left** for 1 second.
  
  4. When you are ready, tap **Run My Code**.
 */

@@ -12,12 +12,12 @@ startAssessor()
 
 
 //#-code-completion(everything, hide)
+//#-code-completion(identifier, show, move(direction:duration:), wait(_:), .)
 //#-code-completion(identifier, show, MoveDirection, forward, backward)
-//#-code-completion(identifier, show, move(direction:duration:), .)
 //#-end-hidden-code
 
 /*:#localized(key: "FirstProseBlock")
- **Goal:** Learn how to move [drone](glossary://drone) forward and backward.
+ **Goal:** Learn how to move the [drone](glossary://drone) forward and backward.
 
  1. steps: Place your drone on a flat surface with enough space around you.
  2. The command to move in one direction is

@@ -3,10 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>4. Challenge</string>
-	<key>LiveViewEdgeToEdge</key>
-	<true/>
-	<key>LiveViewMode</key>
-	<string>VisibleByDefault</string>
+	<string>4. End Cutscene</string>
+	<key>CutsceneReference</key>
+	<string>end_scene.html</string>
 </dict>
 </plist>

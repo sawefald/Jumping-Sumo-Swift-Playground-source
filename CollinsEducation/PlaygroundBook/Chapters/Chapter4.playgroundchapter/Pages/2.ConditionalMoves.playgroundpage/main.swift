@@ -7,46 +7,34 @@
 //
 
 waitDroneConnected()
-droneSpeed=30
+droneSpeed = 30
 startAssessor()
 
-
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, move(), wait(_:))
-//#-code-completion(identifier, show, MoveDirection, forward, backward)
-//#-code-completion(identifier, show, duration)
+//#-code-completion(identifier, show, move(direction:), ., wait(_:), stopMoving())
+//#-code-completion(identifier, show, MoveDirection, left, right, forward, backward)
 //#-end-hidden-code
-
 /*:#localized(key: "FirstProseBlock")
- **Goal:** Learn how to move forward and backward.
-
- 1. steps: Place your drone on a flat surface with enough space around you.
-
- For this, direction is either `forward` or `backward`.
+ **Goal:** Learn how to make a conditional move.
  
- ````
- move(direction: MoveDirection.forward, duration: 2)
- ````
- The example above will move the drone forward for 2 seconds.
-
- 3. Try to **move forward** for 1 second and **move backward** for 1 second. Remember, you can use the `wait` command if you want.
- 4. When you are ready, tap **Run My Code**.
+ We learned the `move()` function, which allows you to move in one or multiple directions during a certain duration of time.
+ 
+ We also have another `move()` function that will allows you to move indefinitely, until you tell the drone to stop with a `stopMoving()` command. This is usefull when you are using conditional statements in your program, for example.
+ 
+ Remember, the drone will move until you send the `stopMoving` command. So use it carefully!
+ 
+ 1. steps: Place your drone on a flat surface with enough space around you.
+ 2. Try to **move** in a direction, **wait** for 2 seconds, and **stopMoving**.
+ 3. When you are ready, hit **Run My Code**, using Step Though. See how the `move` command returns immediately after execution!
 */
 //#-editable-code Tap to enter code
 //#-end-editable-code
 
-
 //#-hidden-code
 let success = String(
-    "### Congratulations!\nYou know how to use the pitch command!\n\n[**Next Page**](@next)")
+    "### Congratulations!\nYou know how to use the conditional move command!\n\n[**Next Page**](@next)")
 let expected: [Assessor.Assessment] = [
-    (.move(direction: .forward, duration: nil), [
-        String("First you will move forward using `move(direction: MoveDirection.forward, duration: 1)`."),
-        String("Then you will move backward using `move(direction: MoveDirection.backward, duration: 1)`.")
-        ]),
-    (.move(direction: .backward, duration: nil), [
-        String("Use `move(direction: MoveDirection.backward, duration: 1)` to move backward.")
-        ]),
+    (.stopMoving, [String("Use the stopMove command")]),
 ]
 checkAssessment(expected:expected, success: success)
 //#-end-hidden-code

@@ -27,7 +27,6 @@ public class Drone {
 
     /// Waits until the drone is connected
     public func waitConnected() {
-        print ("calling view proxy wait connected")
         droneViewProxy.waitConnected()
     }
 
@@ -53,9 +52,26 @@ public class Drone {
     /// Stop current mouvement.
     public func stopMoving() {
         droneViewProxy.sendCommand(.stopMoving)
+        assessor?.add(action: .stopMoving)
         droneViewProxy.waitDone()
     }
 
+    /// Animation   and return immediatly
+    ///
+    /// - Parameters:
+    ///   - direction: direction to move
+    public func startAnimation(animation: OtherAnimations) {
+        droneViewProxy.sendCommand(.startAnimation(animation: animation))
+        assessor?.add(action: .startAnimation(animation: animation))
+    }
+
+    /// Stop current mouvement.
+    public func stopAnimation() {
+        droneViewProxy.sendCommand(.stopAnimation)
+        assessor?.add(action: .stopAnimation)
+    }
+
+    
     /// Complex move: move in multiple directions for a specific duration
     ///
     /// - Parameters:
@@ -76,28 +92,12 @@ public class Drone {
         droneViewProxy.waitDone()
     }
 
-    /// Ask the drone to turn on itself
-    ///
-    /// - Parameters:
-    ///   - direction: turn direction
-    ///   - angle: angle to turn in degrees (0 to 180 degrees)
-    //public func turn(direction: TurnDirection, angle: UInt) {
-    //    let absoluteAngle: Int
-    //    switch direction {
-    //    case .left:
-    //        absoluteAngle = -Int(angle)
-    //    case .right:
-    //        absoluteAngle = Int(angle)
-    //    }
-    //    assessor?.add(action: .turn(direction: direction, angle: angle))
-    //}
 
     /// Perform an animation
     ///
     /// - Parameter animation: Animations
     public func animate(animation: Animations) {
         droneViewProxy.sendCommand(.animate(animation: animation))
-        droneViewProxy.waitDone()
         assessor?.add(action: .animate(animation: animation))
     }
     
@@ -106,8 +106,8 @@ public class Drone {
     /// - Parameter jump: JumpType
     public func jump(jumpType: JumpType) {
         droneViewProxy.sendCommand(.jump(jumpType: jumpType))
-        droneViewProxy.waitDone()
         assessor?.add(action: .jump(jumpType: jumpType))
+        droneViewProxy.waitDone()
     }
 
     /// Take a picture
@@ -117,6 +117,10 @@ public class Drone {
     //    droneViewProxy.waitDone()
     //    assessor?.add(action: .takePicture)
     //}
+    
+    public func isConnected() -> Bool {
+        return droneViewProxy.isConnected()
+    }
 }
 
 extension Drone: DroneViewProxyDroneDelegate {

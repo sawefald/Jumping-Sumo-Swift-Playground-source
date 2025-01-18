@@ -82,6 +82,8 @@ class DroneController {
         case move(params: MoveParams, duration: Int)
         case stopMoving
         case animate(animation: Animations)
+        case startAnimation(animation: OtherAnimations)
+        case stopAnimation
         case jump(jumpType: JumpType)
         case emergency
         case cancel
@@ -113,6 +115,12 @@ class DroneController {
         case .jump(let jumpType):
             droneProtocol?.jump(jumpType: jumpType.rawValue)
             
+        case .stopAnimation:
+            droneProtocol?.stopAnimation()
+        
+        case .startAnimation(let animation):
+            droneProtocol?.startAnimation(animation: animation.rawValue)
+
         case .emergency:
             droneProtocol?.emergency()
         
@@ -130,10 +138,8 @@ class DroneController {
     }
     
     public func start() {
-        print ("Start -- \(self.connectionState)")
         if self.connectionState == .disconnected {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                print ("Start -- \(self.connectionState)")
                 if (self.connectionState == .searching)
                 {
                     self.connectionState = .searchingAgain
@@ -158,7 +164,6 @@ extension DroneController: DroneWiFiDelegate {
     
     func droneWifiDidConnect() {
         // WiFi Delegate Did connect
-        print("DroneController - Did Connect called")
         connectionState = .connecting
         DispatchQueue.main.sync {
             droneProtocol = DroneProtocol(droneWiFi: wifi, queue: protocolQueue, delegate: self)
@@ -183,7 +188,6 @@ extension DroneController: DroneWiFiDelegate {
 extension DroneController: DroneProtocolDelegate {
     
     func protocolDidConnect() {
-        print("connection State = connected")
         connectionState = .connected
     }
     
@@ -201,6 +205,8 @@ extension DroneController: DroneProtocolDelegate {
             case .move: fallthrough
             case .animate: fallthrough
             case .jump: fallthrough
+            case .startAnimation: fallthrough
+            case .stopAnimation: fallthrough
             case .emergency: fallthrough
             case .cancel: fallthrough
             case .load: fallthrough
@@ -219,6 +225,15 @@ extension DroneController: DroneProtocolDelegate {
             batteryLevel = .level(percent: percent, low: low)
         } else {
             batteryLevel = .unknown
+        }
+        
+        if let currentOp = currentOp {
+            switch currentOp {
+                case .jump:
+                    currentOpTerminated(error: OpError.jumpLowBat)
+                default:
+                    break
+            }
         }
     }
 }
