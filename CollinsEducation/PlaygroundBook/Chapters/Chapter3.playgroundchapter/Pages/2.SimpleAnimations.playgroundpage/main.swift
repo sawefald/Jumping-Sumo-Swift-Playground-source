@@ -12,8 +12,8 @@ startAssessor()
 
 
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, Animation, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
 //#-code-completion(identifier, show, animate(animation:), .)
+//#-code-completion(identifier, show, Animations, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
 //#-end-hidden-code
 
 /*:#localized(key: "FirstProseBlock")

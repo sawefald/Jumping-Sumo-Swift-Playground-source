@@ -24,7 +24,6 @@ class DroneViewProxy {
     /// Commands sent from playground page to contoller
     enum Cmd {
         case getState
-        //case turn(angle: Int)
         case move(params: MoveParams, duration: Int)
         case stopMoving
         case animate(animation: Animations)
@@ -38,8 +37,6 @@ class DroneViewProxy {
             switch self {
             case .getState:
                 return .dictionary(["cmd": .string("getState")])
-//            case .turn(let angle):
-//                return .dictionary(["cmd": .string("turn"), "angle": .integer(angle)])
             case .move(let params, let duration):
                 return .dictionary(["cmd": .string("move"),
                                     "params": .array([
@@ -72,10 +69,6 @@ class DroneViewProxy {
                 switch cmdStr {
                 case "getState":
                     val = .getState
-//                case "turn":
-//                    if case let .integer(angle)? = dict["angle"] {
-//                        val = .turn(angle: angle)
-//                    }
                 case "move":
                     if case let .array(params)? = dict["params"], params.count == 2,
                         case let .integer(longitudinalSpeed) = params[0],
@@ -194,21 +187,17 @@ class DroneViewProxy {
 
     func waitConnected() {
         done = false
-        print ("view proxy sendCommand .getState")
         sendCommand(.getState)
         while !connected || !done {
             receiveEvents()
         }
-        print("connected")
     }
 
     func sendCommand(_ cmd: Cmd) {
-        print("send command: \(cmd.marshal())")
         (PlaygroundPage.current.liveView as? PlaygroundRemoteLiveViewProxy)?.send(cmd.marshal())
     }
 
     func processEvent(_ event: Evt) {
-        print("process event: \(event)")
         switch event {
         case .connected(let connected):
             self.connected = connected
@@ -226,12 +215,14 @@ class DroneViewProxy {
     }
 
     func waitDone() {
-        print ("waiting until done")
         done = false
         while !done {
             receiveEvents()
         }
-        print("done")
+    }
+    
+    func isConnected() -> Bool {
+        return connected
     }
 }
 

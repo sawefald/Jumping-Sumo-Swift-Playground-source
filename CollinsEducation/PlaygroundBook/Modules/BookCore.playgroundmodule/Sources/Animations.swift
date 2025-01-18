@@ -34,11 +34,11 @@ public enum Animations: UInt32 {
 
 /// Choices for the `startAnimation()` command
 public enum OtherAnimations: UInt32 {
-    /// flash lights
+    /// flash lights - only valid for Buzz
     case flashlights = 0
-    /// blink lights
+    /// blink lights only - valid for Buzz
     case blinklights = 1
-    /// oscillatelights
+    /// oscillatelights - only valid for Buzz
     case oscillatelights = 2
     /// spin animation
     case spin = 3
@@ -58,6 +58,8 @@ public enum OtherAnimations: UInt32 {
     case spiral = 10
     /// slalom animation
     case slalom = 11
+    /// boost animation -- only valid for Max
+    case boost = 12
 }
 
 

@@ -6,8 +6,10 @@
 	<string>Chapter 5. Accelerometers</string>
 	<key>Pages</key>
 	<array>
+		<string>1.Intro.cutscenepage</string>
 		<string>2.MotionControl.playgroundpage</string>
 		<string>3.AdvancedControl.playgroundpage</string>
+		<string>4.End.cutscenepage</string>
 	</array>
 </dict>
 </plist>

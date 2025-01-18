@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fcD-sv-Xiz">
-    <device id="ipad10_9rounded" orientation="portrait" layout="fullscreen" appearance="dark"/>
+    <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,35 +12,35 @@
             <objects>
                 <viewController id="fcD-sv-Xiz" customClass="BookCore_LiveViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rh2-0a-zph">
-                        <rect key="frame" x="0.0" y="0.0" width="820" height="1180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="chap1back4" translatesAutoresizingMaskIntoConstraints="NO" id="IJu-he-U14" userLabel="Background4">
-                                <rect key="frame" x="0.0" y="142" width="820" height="1018"/>
+                                <rect key="frame" x="0.0" y="138" width="810" height="942"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="chap1back3" translatesAutoresizingMaskIntoConstraints="NO" id="OHC-Ky-Eac" userLabel="Background3">
-                                <rect key="frame" x="0.0" y="124" width="820" height="1036"/>
+                                <rect key="frame" x="0.0" y="120" width="810" height="960"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="chap1back2" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-em-goT" userLabel="Background2">
-                                <rect key="frame" x="0.0" y="146" width="820" height="1014"/>
+                                <rect key="frame" x="0.0" y="142" width="810" height="938"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="chap1back1" translatesAutoresizingMaskIntoConstraints="NO" id="GS7-2Y-HOT" userLabel="Background1">
-                                <rect key="frame" x="0.0" y="168" width="820" height="992"/>
+                                <rect key="frame" x="0.0" y="164" width="810" height="916"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="JumpingSumo" translatesAutoresizingMaskIntoConstraints="NO" id="SUp-32-5rC" userLabel="Drone">
-                                <rect key="frame" x="213.5" y="443.5" width="393" height="293"/>
+                                <rect key="frame" x="208.5" y="393.5" width="393" height="293.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="chap1shadow" translatesAutoresizingMaskIntoConstraints="NO" id="HnM-Fe-D7T" userLabel="Shadow">
-                                <rect key="frame" x="258.5" y="708" width="303" height="25"/>
+                                <rect key="frame" x="253.5" y="637" width="303" height="25"/>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVH-xX-PHw" userLabel="OpLabel">
-                                <rect key="frame" x="0.0" y="796" width="820" height="0.0"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVH-xX-PHw" userLabel="OpLabel">
+                                <rect key="frame" x="0.0" y="760" width="810" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoL-qD-ZyK">
-                                <rect key="frame" x="365.5" y="34" width="89" height="35"/>
+                                <rect key="frame" x="360.5" y="30" width="89" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Connect"/>
                                 <connections>
@@ -51,7 +51,6 @@
                         <viewLayoutGuide key="safeArea" id="qaR-nP-dw0"/>
                         <color key="backgroundColor" red="0.88323779328196661" green="0.9382895882682798" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="SUp-32-5rC" firstAttribute="top" secondItem="qaR-nP-dw0" secondAttribute="top" constant="419.5" id="4c5-zA-34L"/>
                             <constraint firstItem="GS7-2Y-HOT" firstAttribute="centerX" secondItem="SUp-32-5rC" secondAttribute="centerX" id="6Ex-ON-PTT"/>
                             <constraint firstItem="GS7-2Y-HOT" firstAttribute="trailing" secondItem="DVH-xX-PHw" secondAttribute="trailing" id="8Rd-2W-er0"/>
                             <constraint firstItem="GS7-2Y-HOT" firstAttribute="bottom" secondItem="zaA-em-goT" secondAttribute="bottom" id="Bmh-4u-sh6"/>
@@ -62,12 +61,12 @@
                             <constraint firstItem="OHC-Ky-Eac" firstAttribute="trailing" secondItem="IJu-he-U14" secondAttribute="trailing" id="SMj-et-mA2"/>
                             <constraint firstItem="DVH-xX-PHw" firstAttribute="leading" secondItem="qaR-nP-dw0" secondAttribute="leading" id="TgT-pc-l4p"/>
                             <constraint firstItem="OHC-Ky-Eac" firstAttribute="top" secondItem="qaR-nP-dw0" secondAttribute="top" constant="100" id="Vsp-EE-GP4"/>
-                            <constraint firstItem="DVH-xX-PHw" firstAttribute="top" secondItem="qaR-nP-dw0" secondAttribute="top" constant="772" id="XBo-ca-gsl"/>
+                            <constraint firstItem="DVH-xX-PHw" firstAttribute="top" secondItem="HnM-Fe-D7T" secondAttribute="bottom" constant="98" id="XBo-ca-gsl" userLabel="OpLabel.bottom = Shadow.bottom"/>
                             <constraint firstItem="OHC-Ky-Eac" firstAttribute="centerX" secondItem="Rh2-0a-zph" secondAttribute="centerX" id="XWK-u6-x97"/>
                             <constraint firstItem="IJu-he-U14" firstAttribute="bottom" secondItem="zaA-em-goT" secondAttribute="bottom" id="Yh2-dF-aCU"/>
                             <constraint firstItem="SUp-32-5rC" firstAttribute="centerY" secondItem="Rh2-0a-zph" secondAttribute="centerY" id="a8l-8S-rsJ"/>
                             <constraint firstItem="GS7-2Y-HOT" firstAttribute="leading" secondItem="IJu-he-U14" secondAttribute="leading" id="dwu-8F-56E"/>
-                            <constraint firstItem="HnM-Fe-D7T" firstAttribute="top" secondItem="qaR-nP-dw0" secondAttribute="top" constant="684" id="fVS-Y5-OI7"/>
+                            <constraint firstItem="HnM-Fe-D7T" firstAttribute="top" secondItem="SUp-32-5rC" secondAttribute="bottom" constant="-50" id="fVS-Y5-OI7" userLabel="Shadow.top = Drone.bottom"/>
                             <constraint firstItem="OHC-Ky-Eac" firstAttribute="leading" secondItem="qaR-nP-dw0" secondAttribute="leading" id="g5v-TK-uTZ"/>
                             <constraint firstItem="zaA-em-goT" firstAttribute="top" secondItem="qaR-nP-dw0" secondAttribute="top" constant="122" id="hvS-D5-Smc"/>
                             <constraint firstItem="GS7-2Y-HOT" firstAttribute="top" secondItem="qaR-nP-dw0" secondAttribute="top" constant="144" id="lxg-OI-q8S"/>

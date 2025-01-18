@@ -6,6 +6,7 @@
 	<string>Chapter 3. Explore Animations</string>
 	<key>Pages</key>
 	<array>
+		<string>1.Intro.cutscenepage</string>
 		<string>2.SimpleAnimations.playgroundpage</string>
 		<string>3.JumpAnimations.playgroundpage</string>
 		<string>4.Challenge.playgroundpage</string>

@@ -10,10 +10,9 @@ waitDroneConnected()
 droneSpeed=30
 startAssessor()
 
-
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, Animation, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
-//#-code-completion(identifier, show, animate(animation:), jump(jumpType:) .)
+//#-code-completion(identifier, show, animate(animation:), jump(jumpType:), ., wait(_:))
+//#-code-completion(identifier, show, Animations, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
 //#-code-completion(identifier, show, JumpType, high, long)
 //#-end-hidden-code
 
@@ -36,13 +35,7 @@ func acrobatics() {
 //#-hidden-code
 let success = String(
  "### Congratulations!\nYou achieved your third mission!\n\n[**Next Page**](@next)")
-let expected: [Assessor.Assessment] = [
-    (.allAnyOrder([
-            .jump(nil),
-            .animate(nil),
-            ]),
-         [String("You must perform a jump and animation.")])
-]
+let expected: [Assessor.Assessment] = []
 checkAssessment(expected:expected, success: success)
 //#-end-hidden-code
 

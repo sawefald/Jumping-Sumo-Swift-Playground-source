@@ -208,6 +208,14 @@ class DroneProtocol {
             if !checkFirmwareUpToDate(versionString: version) {
                 delegate?.firmwareOutOfDate()
             }
+        case .jumpLoad(let state):
+            print ("jumpLoad State: \(state)")
+            if (state == 0x1) {
+                self.delegate?.pcmdTerminated()
+            }
+            else if (state == 0x4) {
+                self.delegate?.batteryLevelDidChange(nil, low: true)
+            }
         default:
             break
         }
@@ -339,63 +347,63 @@ private enum Event {
         case (0, 3, 0):
             return .allSettingsSent
         case (0, 3, 3):
-            return .productVersion(version: data.readString(at: 10))
+            return .productVersion(version: data.readString(at: 11))
         case (0, 3, 2):
-            return .productName(name: data.readString(at: 10))
+            return .productName(name: data.readString(at: 11))
         case (0, 3, 4):
-            return .productSerialNumberHigh(high: data.readString(at: 10))
+            return .productSerialNumberHigh(high: data.readString(at: 11))
         case (0, 3, 5):
-            return .productSerialNumberLow(low: data.readString(at: 10))
+            return .productSerialNumberLow(low: data.readString(at: 11))
         case (0, 3, 7): //Autocountry
-            return .autoCountry(automatic: data[10] == 1)
+            return .autoCountry(automatic: data[11] == 1)
         case (0, 3, 6): // Country
-            return .country(code: data.readString(at: 10))
+            return .country(code: data.readString(at: 11))
         case (3, 9, 0): // Network WiFi Selection
-            return .wifiSelection(type: data.readUIn32(at: 10), band: data.readUIn32(at: 14), channel: data[19])
+            return .wifiSelection(type: data.readUIn32(at: 11), band: data.readUIn32(at: 15), channel: data[19])
         case (3, 13, 0): // Master Volume
-            return .masterVolume(volume: data[10])
+            return .masterVolume(volume: data[11])
         case (0, 10, 0): // WiFi setting - Outdoors
-            return .outdoorSetting(outdoor: data[10] == 1)
+            return .outdoorSetting(outdoor: data[11] == 1)
         case (3, 22, 0): // Video Auto Record
-            return .autoRecord(enabled: data[10] == 1)
+            return .autoRecord(enabled: data[11] == 1)
             
         // States
         case (0, 5, 0):
             return .allStateSent
         case (0, 18, 2): // AR Libs Version
-            return .deviceLibVersion(version: data.readString(at: 10))
+            return .deviceLibVersion(version: data.readString(at: 11))
         case (3, 1, 0): // Posture
-            return .posture(state: data.readUIn32(at: 10))
+            return .posture(state: data.readUIn32(at: 11))
         case (3, 3, 0): // Animation - JumpLoad
-            return .jumpLoad(state: data.readUIn32(at: 10))
+            return .jumpLoad(state: data.readUIn32(at: 11))
         case (3, 3, 2): // Animation - Jump Motor
-            return .jumpMotorProblem(error: data.readUIn32(at: 10))
+            return .jumpMotorProblem(error: data.readUIn32(at: 11))
         case (0, 29, 3): // Charging info
-            return .chargingInfo(phase: data.readUIn32(at: 10), rate: data.readUIn32(at: 14), intensity: data[18], fullChargingTime: data[19])
+            return .chargingInfo(phase: data.readUIn32(at: 11), rate: data.readUIn32(at: 15), intensity: data[19], fullChargingTime: data[20])
         case (0, 25, 0): // Animation List
-            return .animationList(anim: data.readUIn32(at: 10), stopped: data[14] == 1, error: data.readUIn32(at: 18))
+            return .animationList(anim: data.readUIn32(at: 11), stopped: data[15] == 1, error: data.readUIn32(at: 19))
         case (0, 5, 1):
-            return .batteryStateChanged(level: data[10])
+            return .batteryStateChanged(level: data[11])
         case (0, 5, 9):
-            return .productModel(model: data.readUIn32(at: 10))
+            return .productModel(model: data.readUIn32(at: 11))
         case (0, 23, 0):
-            return .headlightsState(left: data[10], right: data[10])
+            return .headlightsState(left: data[11], right: data[12])
         case (0, 5, 8):
-            return .sensorStateList(sensor: data.readUIn32(at: 10), state: data[14])
+            return .sensorStateList(sensor: data.readUIn32(at: 11), state: data[15])
         case (3, 19, 0):
-            return .videoEnabled(enabled: data[10] == 1)
+            return .videoEnabled(enabled: data[11] == 1)
         case (3, 7, 3):
-            return .videoStateV2(state: data.readUIn32(at: 10), error: data.readUIn32(at: 14))
+            return .videoStateV2(state: data.readUIn32(at: 11), error: data.readUIn32(at: 15))
         case (3, 7, 1):
-            return .videoState(state: data.readUIn32(at: 10), massStorageId: data[14])
+            return .videoState(state: data.readUIn32(at: 11), massStorageId: data[15])
         case (0, 5, 2):
-            return .massStorageStateList(massStorageId: data[10], name: data.readString(at: 14))
+            return .massStorageStateList(massStorageId: data[11], name: data.readString(at: 15))
         case (0, 5, 3):
-            return .massStorageInfoStateList(massStorageId: data[10], size: data.readUIn32(at: 11), used: data.readUIn32(at: 15), plugged: data[19] == 1, full: data[20] == 1)
+            return .massStorageInfoStateList(massStorageId: data[11], size: data.readUIn32(at: 12), used: data.readUIn32(at: 16), plugged: data[20] == 1, full: data[21] == 1)
         case (3, 11, 4):
-            return .linkQuality(quality: data[10])
+            return .linkQuality(quality: data[11])
         case (0, 5, 7):
-            return .wifiSignal(rssi: data.readInt16(at: 10))
+            return .wifiSignal(rssi: data.readInt16(at: 11))
             
         default:
             return nil

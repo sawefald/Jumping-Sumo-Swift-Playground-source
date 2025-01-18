@@ -12,8 +12,8 @@ startAssessor()
 
 
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, MoveDirection, forward, backward, right, left)
 //#-code-completion(identifier, show, droneSpeed, move(direction:duration:), ., =)
+//#-code-completion(identifier, show, MoveDirection, forward, backward, right, left)
 //#-end-hidden-code
 
 /*:#localized(key: "FirstProseBlock")
@@ -41,7 +41,7 @@ let success = String(
 let expected: [Assessor.Assessment] = [
     (.speed(nil), [
         String("Use `droneSpeed = value<0..100>` to change the drone speed.")
-        ])
+        ]),
 ]
 checkAssessment(expected:expected, success: success)
 //#-end-hidden-code

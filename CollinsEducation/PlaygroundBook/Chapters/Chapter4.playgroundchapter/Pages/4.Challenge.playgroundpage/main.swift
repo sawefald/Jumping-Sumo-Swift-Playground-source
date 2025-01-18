@@ -5,15 +5,13 @@
 //  Abstract:
 //  The Swift file containing the source code edited by the user of this playground book.
 //
-
 waitDroneConnected()
 droneSpeed=30
 startAssessor()
 
-
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, jump(jumpType:), startAnimation(animation:), ., wait(_:), stopAnimation(), move(direction:), ., wait(_:), stopMoving())
-//#-code-completion(identifier, show, OtherAnimation, flashlights, blinklights, oscillatelights, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
+//#-code-completion(identifier, show, jump(jumpType:), startAnimation(animation:), ., wait(_:), stopAnimation(), move(direction:), stopMoving())
+//#-code-completion(identifier, show, OtherAnimations, flashlights, blinklights, oscillatelights, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
 //#-code-completion(identifier, show, JumpType, high, long)
 //#-code-completion(identifier, show, MoveDirection, left, right, forward, backward)
 //#-end-hidden-code
@@ -21,7 +19,7 @@ startAssessor()
 /*:#localized(key: "FirstProseBlock")
  **Challenge:** Perform combo moves.
 
-For the fourh challenge, you will make the drone do some combo moves. You will be using the animate, jump, and move commands you have learned up to now! Create a [function](glossary://function) called `comboMove()`, using the commands.
+For the fourth challenge, you will make the drone do some combo moves. You will be using the animate, jump, and move commands you have learned up to now! Create a [function](glossary://function) called `comboMove()`, using the commands.
  
 Try starting more than one animation at a time or try moving then performing a jump.  What does the drone let you combine?
  
@@ -41,10 +39,11 @@ let success = String(
  "### Congratulations!\nYou achieved your fourth mission!\n\n[**Next Page**](@next)")
 let expected: [Assessor.Assessment] = [
     (.allAnyOrder([
-            .stopMoving(nil),
-            .stopAnimation(nil),
+            .stopMoving,
+            .stopAnimation,
             ]),
-         [String("You must perform a move/stop and start/stop an animation.")]) ]
+         [String("You must perform a move/stop and start/stop an animation.")]),
+]
 checkAssessment(expected:expected, success: success)
 //#-end-hidden-code
 

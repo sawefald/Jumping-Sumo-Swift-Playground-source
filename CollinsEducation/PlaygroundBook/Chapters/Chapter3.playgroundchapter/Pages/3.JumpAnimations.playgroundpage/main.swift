@@ -12,8 +12,8 @@ startAssessor()
 
 
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, JumpType, high, long)
 //#-code-completion(identifier, show, jump(jumpType:), .)
+//#-code-completion(identifier, show, JumpType, high, long)
 //#-end-hidden-code
 
 /*:#localized(key: "FirstProseBlock")

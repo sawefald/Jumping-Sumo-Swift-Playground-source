@@ -10,7 +10,6 @@ droneSpeed = 30
 startAssessor()
 
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, takeOff(), land(), wait(_:))
 //#-code-completion(identifier, show, move(speed:turn:duration:))
 //#-end-hidden-code
 /*:#localized(key: "FirstProseBlock")

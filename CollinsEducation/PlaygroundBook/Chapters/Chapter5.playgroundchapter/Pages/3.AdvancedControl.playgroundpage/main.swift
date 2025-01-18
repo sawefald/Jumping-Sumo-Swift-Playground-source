@@ -5,12 +5,12 @@ droneSpeed = 30
 startAssessor()
 
 //#-code-completion(everything, hide)
+//#-code-completion(identifier, show, case, :, move(direction:duration:), ., jump(jumpType:),animate(animation:), stopMoving, stopAnimation,startAnimation(animation:))
+//#-code-completion(identifier, show, MoveDirection, forward, backward, left, right)
 //#-code-completion(identifier, show, MotionEvent, tiltForward, tiltBackward, tiltLeft, tiltRight, shakeUp, shakeDown, flat)
 //#-code-completion(identifier, show, MoveDirection, forward, backward, left, right)
-
-//#-code-completion(identifier, show, Animation, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
+//#-code-completion(identifier, show, Animations, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
 //#-code-completion(identifier, show, JumpType, high, long)
-//#-code-completion(identifier, show, jump(jumpType:),animate(animation:), move(direction:), .)
 //#-end-hidden-code
 /*:#localized(key: "FirstProseBlock")
  **Goal:** Advanced control using the accelerometer
@@ -27,7 +27,7 @@ startAssessor()
  4. Grab your iPad and tilt it forward and backward. What do you observe?
 */
 // run forever
-while true {
+while isConnected() {
     let event = waitNextMotionEvent()
     
     switch event {
@@ -42,7 +42,7 @@ while true {
 
 //#-hidden-code
 let success = String(
-    "### Congratulations!** You managed to understand how the iPad accelerometer works! Now it is time to create a drone remote control using code!!!!!\n\n[**Next Page**](@next)")
+    "### Congratulations!** You've completed the drone driving school!!! You are now a Swift program and drone driver")
 
 let expected: [Assessor.Assessment] = [
     (.jump(jumpType: nil), [

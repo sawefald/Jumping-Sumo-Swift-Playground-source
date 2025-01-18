@@ -8,8 +8,6 @@
 import UIKit
 import PlaygroundSupport
 
-fileprivate var count = 0
-
 /// Abstract class for all drone views
 public class DroneViewControllerBase: UIViewController, PlaygroundLiveViewSafeAreaContainer {
 
@@ -27,8 +25,6 @@ public class DroneViewControllerBase: UIViewController, PlaygroundLiveViewSafeAr
     fileprivate let motionTracker = MotionTracker()
     
     @IBAction func connectButton(sender: UIButton) {
-        print ("count: \(count) drone state: \(droneController.connectionState)")
-        count += 1
         if droneController.connectionState == .disconnected {
             droneController.start()
             sender.setTitle("Connecting...", for: .normal)
@@ -36,9 +32,8 @@ public class DroneViewControllerBase: UIViewController, PlaygroundLiveViewSafeAr
         else if droneController.connectionState == .connected {
             droneController.disconnect()
             sender.setTitle("Connect", for: .normal)
+            self.opLabel.text = ""
         }
-        opLabel.text = "Button Pressed"
-        opLabel.isHidden = false
     }
 
     override public func viewDidLoad() {
@@ -87,6 +82,8 @@ extension DroneViewControllerBase: DroneControllerDelegate {
 
     final func droneControllerDidFindDrone(droneModel: String) {
         DispatchQueue.main.async {
+            self.opLabel.text = droneModel
+            self.opLabel.isHidden = false
             self.updateContent()
         }
     }
@@ -168,27 +165,19 @@ extension DroneViewControllerBase: PlaygroundLiveViewMessageHandler {
     }
 
     final  public func receive(_ message: PlaygroundValue) {
-        print("playground receive message: \(message))")
         if let cmd = DroneViewProxy.Cmd(value: message) {
             switch cmd {
             case .getState:
-                opLabel.text = "getState"
                 send(event: .status)
                 send(event: .connected(droneController.connectionState == .connected))
                 send(event: .cmdCompleted)
-//            case .turn(let angle):
-//                droneController.execute(op: .turn(angle: angle))
             case .move(let params, let duration):
-                opLabel.text = "move"
                 droneController.execute(op: .move(params: params, duration: duration))
             case .stopMoving:
-                opLabel.text = "stopmoving"
                 droneController.execute(op: .stopMoving)
             case .animate(let animation):
-                opLabel.text = "animate"
                 droneController.execute(op: .animate(animation: animation))
             case .jump(let jumpType):
-                opLabel.text = "Jump"
                 if jumpType == .emergency {
                     droneController.execute(op: .emergency)
                 }
@@ -202,10 +191,8 @@ extension DroneViewControllerBase: PlaygroundLiveViewMessageHandler {
                     droneController.execute(op: .jump(jumpType: jumpType))
                 }
             case .startAnimation(let animation):
-                opLabel.text = "Start Animation"
                 droneController.execute(op: .startAnimation(animation: animation))
             case .stopAnimation:
-                opLabel.text = "stop animation"
                 droneController.execute(op: .stopAnimation)
             //case .takePicture:
             //    droneController.execute(op: .takePicture)

@@ -221,7 +221,6 @@ class DroneWiFi {
     }
     
     func c2dconnect(port: Int) {
-        print("connecting to port \(port)")
         let host = NWEndpoint.Host(self.hostStr)
         let port = NWEndpoint.Port("\(port)")!
         self.c2drone = NWConnection(host: host, port: port, using: .udp)
@@ -230,16 +229,14 @@ class DroneWiFi {
             switch update {
             case .ready:
                 self.isSendReady = true
-                print("Sender connected to port \(port)")
                 self.setupSenderReceivers()
                 self.delegate?.droneWifiDidConnect()
             case .failed, .cancelled:
                 // Announce we are no longer able to listen
                 self.isSendReady = false
                 self.delegate?.droneWifiDidDisconnect()
-                print("Sender disconnected from port \(port)")
             default:
-                print("Sender connecting to port \(port)...")
+                break
             }
         }
         self.c2drone?.start(queue: .global())

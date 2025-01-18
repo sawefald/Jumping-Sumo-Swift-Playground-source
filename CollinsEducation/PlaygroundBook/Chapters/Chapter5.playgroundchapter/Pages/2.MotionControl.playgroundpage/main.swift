@@ -5,9 +5,9 @@ droneSpeed = 30
 startAssessor()
 
 //#-code-completion(everything, hide)
+//#-code-completion(identifier, show, case, :, move(direction:duration:), .)
 //#-code-completion(identifier, show, MotionEvent, tiltForward, tiltBackward, tiltLeft, tiltRight)
 //#-code-completion(identifier, show, MoveDirection, forward, backward, left, right)
-//#-code-completion(identifier, show, move(direction:duration:), .)
 //#-end-hidden-code
 /*:#localized(key: "FirstProseBlock")
  **Goal:** Control your drone by tilting your iPad.
@@ -24,7 +24,7 @@ startAssessor()
  4. Grab your iPad and tilt it forward and backward. What do you observe?
 */
 // run forever
-while true {
+while isConnected() {
     let event = waitNextMotionEvent()
     
     switch event {
@@ -45,7 +45,7 @@ let success = String(
 
 let expected: [Assessor.Assessment] = [
     (.move(direction: .forward, duration: nil), [
-        String("Tilt your ipad  forward"),
+        String("Tilt your ipad forward"),
         String("Then you will move backward using `move(direction: MoveDirection.backward, duration: 1)`.")
         ]),
     (.move(direction: .backward, duration: nil), [

@@ -12,7 +12,7 @@ startAssessor()
 
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, startAnimation(animation:), ., wait(_:), stopAnimation())
-//#-code-completion(identifier, show, OtherAnimation, flashlights, blinklights, oscillatelights, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom)
+//#-code-completion(identifier, show, OtherAnimations, flashlights, blinklights, oscillatelights, spin, tap, slowshake, metronome, ondulation, spinposture, spiral, slalom, boost)
 //#-end-hidden-code
 /*:#localized(key: "FirstProseBlock")
  **Goal:** Learn how to make a conditional animation.
@@ -23,7 +23,7 @@ startAssessor()
  
  Remember, the drone will move until you send the `stopAnimation` command. So use it carefully!
  
- There are several animations avaialable: `flashlights`, `blinklights`, `oscillatelights`, `spin`, `tap`, `slowshake`, `metronome`, `ondulation`, `spinposture`, `spiral`, `slalom`
+ There are several animations avaialable: `flashlights` (Buzz Only), `blinklights` (Buzz Only), `oscillatelights` (Buzz Only), `spin`, `tap`, `slowshake`, `metronome`, `ondulation`, `spinposture`, `spiral`, `slalom`, `boost` (Max Only)
  
  1. steps: Place your drone on a flat surface with enough space around you.
  2. Try to **startAnimation** like blinkinglights, **wait** for 2 seconds, and **stopAnimation**.
